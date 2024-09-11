@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm> // For std::remove
 
 class Student {
 public:
@@ -11,10 +12,23 @@ public:
         return rollNumber;
     }
 
+    void setName(const std::string& newName) {
+        name = newName;
+    }
+
+    void setAge(int newAge) {
+        age = newAge;
+    }
+
     void display() const {
         std::cout << "Roll Number: " << rollNumber << std::endl;
         std::cout << "Name: " << name << std::endl;
         std::cout << "Age: " << age << std::endl;
+    }
+
+    // Overload == operator for comparison
+    bool operator==(const Student& other) const {
+        return rollNumber == other.rollNumber;
     }
 
 private:
@@ -47,11 +61,15 @@ public:
         return nullptr;
     }
 
-    void updateStudent(const std::string& rollNumber, const std::string& name, const int age) {
+    void updateStudent(const std::string& rollNumber, const std::string& newName, const int newAge) {
         Student* student = findStudent(rollNumber);
         if (student) {
+            std::cout << "Current Details:" << std::endl;
             student->display();
             std::cout << "Updating Student..." << std::endl;
+            student->setName(newName);
+            student->setAge(newAge);
+            std::cout << "Updated Details:" << std::endl;
             student->display();
         } else {
             std::cout << "Student not found." << std::endl;
