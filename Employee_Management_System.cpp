@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm> // for std::remove
 
 class Employee {
 public:
@@ -11,11 +12,29 @@ public:
         return id;
     }
 
+    // Setter methods to update employee details
+    void setName(const std::string& newName) {
+        name = newName;
+    }
+
+    void setDepartment(const std::string& newDepartment) {
+        department = newDepartment;
+    }
+
+    void setRole(const std::string& newRole) {
+        role = newRole;
+    }
+
     void display() const {
         std::cout << "Employee ID: " << id << std::endl;
         std::cout << "Name: " << name << std::endl;
         std::cout << "Department: " << department << std::endl;
         std::cout << "Role: " << role << std::endl;
+    }
+
+    // Overload == operator to allow comparison by ID
+    bool operator==(const Employee& other) const {
+        return id == other.id;
     }
 
 private:
@@ -52,8 +71,10 @@ public:
     void updateEmployee(const std::string& id, const std::string& name, const std::string& department, const std::string& role) {
         Employee* employee = findEmployee(id);
         if (employee) {
-            employee->display();
-            std::cout << "Updating Employee..." << std::endl;
+            employee->setName(name);              // Update employee details
+            employee->setDepartment(department);
+            employee->setRole(role);
+            std::cout << "Employee updated successfully!" << std::endl;
             employee->display();
         } else {
             std::cout << "Employee not found." << std::endl;
