@@ -8,7 +8,7 @@
 
 ## 📚 Syllabus Covered
 
-### **Object-Oriented Programming Concepts**
+### (1) **Object-Oriented Programming Concepts**
 - Class & Object  
 - Encapsulation  
 - Inheritance  
@@ -18,6 +18,19 @@
 - Abstraction → Virtual Functions  
 - Friend Functions  
 - Constructor & Destructor  
+
+### (2) **Standard Template Library (STL)**
+- Vector  
+- Deque  
+- Stack  
+- Set  
+- Multiset  
+- Unordered Set  
+- Unordered Multiset  
+- Map  
+- Multimap  
+- Unordered Map  
+- Unordered Multimap  
 
 ---
 
